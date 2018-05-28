@@ -1,6 +1,6 @@
-# ¿ÀÇÂ¼Ò½ºSW 7Á¶      
+# ì˜¤í”ˆì†ŒìŠ¤SW 7ì¡°      
 
-## °úÁ¦ : SET Implementation
+## ê³¼ì œ : SET Implementation
 * Works to do
   * Unit test for implementations
     * Periodic(or continuous) build and smoke test
@@ -13,19 +13,20 @@
 4. Merge the origin repositry's branch into local branch before `push`.
 5. Create Pull Request
  
-## Á¶¿ø ¸í´Ü
-* 20125095 ÀÌÇÑ±Ô(Á¶Àå)
-* 20164731 ÀÓ¼º¿ø
-* 20122964 Á¤¿øÃ¶
-* 20135286 Á¶°Ç»ó
-* 20165953 ÁÖ±¤¿ì
+## ì¡°ì› ëª…ë‹¨
+* 20125095 ì´í•œê·œ(ì¡°ì¥)
+* 20164731 ì„ì„±ì›
+* 20122964 ì •ì›ì² 
+* 20135286 ì¡°ê±´ìƒ
+* 20165953 ì£¼ê´‘ìš°
 
-## ÀÛ¾÷ ºĞ¹è
+## ì‘ì—… ë¶„ë°°
 * One person per data structure to implement, unit test, and measure performance 
+
 | NAME | Data Structure |
 |---|---|
-|ÀÌÇÑ±Ô|Arrays|
-|ÀÓ¼º¿ø|Simple lists|
-|Á¤¿øÃ¶|Binary search tree|
-|Á¶°Ç»ó|Bit vectors|
-|ÁÖ±¤¿ì|Bins(buckets)|
+|ì´í•œê·œ|Arrays|
+|ì„ì„±ì›|Simple lists|
+|ì •ì›ì² |Binary search tree|
+|ì¡°ê±´ìƒ|Bit vectors|
+|ì£¼ê´‘ìš°|Bins(buckets)|
