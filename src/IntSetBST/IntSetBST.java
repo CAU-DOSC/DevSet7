@@ -1,3 +1,5 @@
+package IntSetBST;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -142,8 +144,3 @@ public class Node{
 		this.right = null;
 	}
 }
-
-
-
-	
-
