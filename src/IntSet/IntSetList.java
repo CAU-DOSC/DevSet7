@@ -1,4 +1,4 @@
-package IntSetList;
+package IntSet;
 
 public class IntSetList {
 

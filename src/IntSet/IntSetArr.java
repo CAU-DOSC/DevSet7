@@ -1,4 +1,4 @@
-package IntSetArr;
+package IntSet;
 
 public class IntSetArr {
 

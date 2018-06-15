@@ -1,4 +1,4 @@
-package IntSetBST;
+package IntSet;
 
 import java.util.ArrayList;
 import java.util.Random;

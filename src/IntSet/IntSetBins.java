@@ -1,4 +1,4 @@
-package IntSetBins;
+package IntSet;
 
 public class IntSetBins {
 
