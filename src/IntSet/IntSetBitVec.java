@@ -1,4 +1,4 @@
-package IntSetBitVec;
+package IntSet;
 
 public class IntSetBitVec {
 
