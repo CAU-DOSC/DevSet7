@@ -31,7 +31,10 @@ public class IntSetBins {
         this.maxelem = maxelements;
         this.maxval = maxval;
         this.element_num = 0;
-        this.bucket = new int[this.maxval+1];
+        if (maxval > 0)
+			this.bucket = new int[this.maxval];
+        else
+        	this.bucket = new int[10];
         Arrays.fill(bucket, 0);
     }
 
@@ -40,6 +43,12 @@ public class IntSetBins {
     	 * 
     	 * Use each int's value as its key.
     	 */
+    	if (element >= this.maxval)
+    		return;
+    	else if (element < 0)
+    		return;
+    	else if (this.element_num >= this.maxelem)
+    		return;
 
         if (this.bucket[element] == 0) {
             this.bucket[element]++;
@@ -54,13 +63,15 @@ public class IntSetBins {
     	 * 	int array which contains sorted set elements.
     	 */
 
-        int[] array = new int[this.maxelem];
+        int[] array = new int[this.element_num];
         int pos = 0;
         for (int i = 0; i < this.bucket.length; i++) {
             if (this.bucket[i] != 0) {
                 array[pos++] = i; 
             }
         }
+        if (array.length == 0)
+        	return null;
         return array;
     }
 
@@ -68,22 +79,4 @@ public class IntSetBins {
     	// return the number of elements in the set.
         return this.element_num;
     }
-
- /*
-    public static void main(String[] args) {
-        int[] num = {3, 2, 5, 4, 1};
-        int m = num.length;
-
-        IntSetBins S = new IntSetBins(5, 5);
-        for (int i = 0; i < m; i++) {
-            S.insert(num[i]);
-        }
-        
-        System.out.println(S.size());
-        int[] result = S.report();
-        for (int j = 0; j < result.length; j++) {
-            System.out.println(result[j] + " ");
-        }
-    }
-    */
 }
