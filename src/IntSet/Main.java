@@ -9,12 +9,12 @@ public class Main {
 	static Random r;
 
 	public static void main(String[] args) {
-		maxelems = 100000;
+		maxelems = 100;
 		maxval = Integer.MAX_VALUE;
 		r = new Random();
 
 		long start_time = System.currentTimeMillis();
-		IntSet arraySet = new IntSetArr();
+		IntSetArr arraySet = new IntSetArr();
 
 		arraySet.intSetImp(maxelems, maxval);
 
@@ -29,6 +29,6 @@ public class Main {
 		for (int i = 0; i < v.length; i++) {
 			System.out.println("v[" + i + "] = " + v[i]);
 		}
-		System.out.println("Execution time = " + timeDiff / 1000 + "sec");
+		System.out.println("Execution time = " + timeDiff + "ms");
 	}
 }

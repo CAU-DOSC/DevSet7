@@ -3,9 +3,9 @@ package IntSet;
 import IntSet.IntSet;
 
 public class IntSetArr implements IntSet {
-	int[] arr;
-	int size;
-	int maxval;
+	public int[] arr;
+	public int size;
+	public int maxval;
 
 	public IntSetArr() {
 		size = 0;
