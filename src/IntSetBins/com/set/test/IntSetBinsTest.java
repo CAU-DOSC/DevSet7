@@ -1,0 +1,120 @@
+package com.set.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import java.util.concurrent.ThreadLocalRandom;
+
+import com.set.IntSetBins;
+
+class IntSetBinsTest {
+
+	// smoke test
+	@Test
+	void smokeTestSpecific() {
+        int[] num = {3, 2, 5, 4, 1};
+        int m = num.length;
+
+        IntSetBins set = new IntSetBins(5, 6);
+        for (int i = 0; i < m; i++) {
+            set.insert(num[i]);
+        }
+        
+        int[] result = set.report();
+        int[] expect = {1, 2, 3, 4, 5};
+        assertArrayEquals(expect, result);
+        assertEquals(m, set.size());
+	}
+	
+	@Test
+	void smokeTestRandom() {
+		int maxelem = 10;
+		int maxval = 1000;
+		
+		IntSetBins set = new IntSetBins(maxelem, maxval);
+		for (int i = 0; i < maxelem; i++) {
+			int randomN = ThreadLocalRandom.current().nextInt(0, maxval);
+			set.insert(randomN);
+		}
+		int[] result = set.report();
+
+		assertTrue(set.size() <= maxelem);
+		assertTrue(result[set.size()-1] <= maxval);
+	}
+	
+	@Test
+	void smokeTestDuplicateInsert() {
+        int[] num = {1, 2, 3, 3, 2, 1};
+        int m = num.length;
+
+        IntSetBins set = new IntSetBins(6, 4);
+        for (int i = 0; i < m; i++) {
+            set.insert(num[i]);
+        }
+        
+        int[] result = set.report();
+        int[] expect = {1, 2, 3};
+        assertArrayEquals(expect, result);
+        assertEquals(expect.length, set.size());
+		
+	}
+	
+	// boundary test
+	@Test
+	void boundaryTestEmpty() {
+		int maxelem = 0;
+		int maxval = 10;
+		
+		IntSetBins set = new IntSetBins(maxelem, maxval);
+		int[] result = set.report();
+		assertEquals(0, set.size());
+		assertNull(result);
+	}
+	
+	@Test
+	void boundaryTestMinVal() {
+		int maxelem = 10;
+		int maxval = 1;
+		
+		IntSetBins set = new IntSetBins(maxelem, maxval);
+		set.insert(0);
+		int[] result = set.report();
+
+		assertEquals(1, set.size());
+		assertEquals(result[0], 0);
+	}
+	
+	@Test
+	void boundaryTestMaxVal() {
+		int maxelem = 10;
+		int maxval = 10;
+		
+		IntSetBins set = new IntSetBins(maxelem, maxval);
+		set.insert(maxval - 1);
+		int[] result = set.report();
+
+		assertEquals(1, set.size());
+		assertEquals(result[0], maxval-1);
+	}
+	
+	@Test
+	void boundaryTestOverBound() {
+		int maxelem = 10;
+		int maxval = 10;
+
+		IntSetBins set = new IntSetBins(maxelem, maxval);
+		set.insert(maxval + 1);
+		
+		assertEquals(0, set.size());
+	}
+
+	@Test
+	void boundaryTestUnderBound() {
+		int maxelem = 10;
+		int maxval = 10;
+
+		IntSetBins set = new IntSetBins(maxelem, maxval);
+		set.insert(-1);
+		
+		assertEquals(0, set.size());
+	}
+}
