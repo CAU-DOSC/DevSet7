@@ -2,7 +2,7 @@ package com.set.test;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.set.IntSetBins;
+import com.set.IntSetSimpleBins;
 
 class SimpleBinsPerformance {
 
@@ -13,7 +13,7 @@ class SimpleBinsPerformance {
 		long report_time = 0;
 		
 		long startTime = System.currentTimeMillis();
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
 		long stopTime = System.currentTimeMillis();
 		init_time = stopTime - startTime;
 		
