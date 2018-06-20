@@ -1,10 +1,11 @@
 package com.set.test;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
-import com.set.IntSetSimpleBins;
+import com.set.IntSetBins;
 
-class SimpleBinsPerformance {
+class ArrayListBinsPerformance {
 
 	public static void tuning(int element_div, int maxval) {
 		int maxelem = maxval/element_div;
@@ -12,16 +13,18 @@ class SimpleBinsPerformance {
 		long insert_time = 0;
 		long report_time = 0;
 		
-		// Initail part
+		// Initial part
 		long startTime = System.currentTimeMillis();
-		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
+		IntSetBins set = new IntSetBins(maxelem, maxval);
 		long stopTime = System.currentTimeMillis();
 		init_time = stopTime - startTime;
 		
 		// Insert part
 		startTime = System.currentTimeMillis();
+		//int random;
 		Random random = new Random();
 		while (set.size() < maxelem) {
+			//random = ThreadLocalRandom.current().nextInt(0, maxval);
 			set.insert(random.nextInt(maxval));
 		}
 		stopTime = System.currentTimeMillis();
@@ -33,8 +36,8 @@ class SimpleBinsPerformance {
 		stopTime = System.currentTimeMillis();
 		report_time = stopTime - startTime;
 		
-		System.out.println("\n------------------------------------------");
-		System.out.println("SimpleBinsSet performance tuning:");
+		System.out.println("------------------------------------------");
+		System.out.println("ArrayListBinsSet performance tuning:");
 		System.out.println("Maxval is " + maxval + ", Maxelem is " + maxelem);
 		System.out.println("Initialize time is " + init_time + "ms.");
 		System.out.println("Insert time is " + insert_time + "ms.");
@@ -51,8 +54,8 @@ class SimpleBinsPerformance {
 		//tuning(50, MAXVALUE_6);
 		//tuning(25, MAXVALUE_6);
 
-		//tuning(100, MAXVALUE_8);
-		//tuning(50, MAXVALUE_8);
+		tuning(100, MAXVALUE_8);
+		tuning(50, MAXVALUE_8);
 		tuning(25, MAXVALUE_8);
 	}
 }

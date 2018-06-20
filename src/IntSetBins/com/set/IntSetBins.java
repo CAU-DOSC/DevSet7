@@ -28,19 +28,19 @@ public class IntSetBins {
     public IntSetBins(int maxelements, int maxval) {
     	/* Set initialization.
     	 * 
-    	 * Use 10 buckets to store the inserted elements.
+    	 * Use number of maxelem buckets to store the inserted elements.
     	 * Each bucket contains a int array.
     	 */
 
         this.maxelem = maxelements;
         this.maxval = maxval;
         this.element_num = 0;
-        this.bucket_size = maxval/10;
+        this.bucket_size = maxval/maxelem;
         if (bucket_size == 0)
-        	bucket_size = 1;  // when maxval less than 10;
+        	bucket_size = 1;  // when maxval less than one intervel;
         
         this.bucket = new ArrayList<ArrayList<Integer>>(10);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < maxelem; i++)
         	bucket.add(new ArrayList<Integer>());
     }
 
@@ -62,6 +62,7 @@ public class IntSetBins {
     	if (bucket_elem.contains(element))
     		return;
     	bucket_elem.add(element);
+    	//bucket.get(index).add(element);
     	this.element_num++;
 	}
 

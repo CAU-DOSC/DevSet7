@@ -2,6 +2,8 @@ package com.set.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.set.IntSetBins;
@@ -116,5 +118,19 @@ class IntSetBinsTest {
 		set.insert(-1);
 		
 		assertEquals(0, set.size());
+	}
+	
+	@Test
+	void boundaryTestHugeElement() {
+		int maxelem = 1000000;
+		int maxval = 100000000;
+		
+		IntSetBins set = new IntSetBins(maxelem, maxval);
+		Random random = new Random();
+		while(set.size() < maxelem) {
+			set.insert(random.nextInt(maxval));
+		}
+		
+		assertEquals(1000000, set.size());
 	}
 }

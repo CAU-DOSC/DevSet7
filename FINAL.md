@@ -51,29 +51,30 @@ Total time is 19ms.
 ------------------------------------------
 SimpleBinsSet performance tuning:
 Maxval is 100000000, Maxelem is 1000000
-Initialize time is 278ms.
-Insert time is 56ms.
-Report time is 56ms.
+Initialize time is 273ms.
+Insert time is 84ms.
+Report time is 57ms.
 
-Total time is 390ms.
+Total time is 414ms.
 ------------------------------------------
 
 ------------------------------------------
 SimpleBinsSet performance tuning:
 Maxval is 100000000, Maxelem is 2000000
-Initialize time is 278ms.
-Insert time is 95ms.
-Report time is 71ms.
+Initialize time is 271ms.
+Insert time is 156ms.
+Report time is 66ms.
 
-Total time is 444ms.
+Total time is 493ms.
 ------------------------------------------
 
 ------------------------------------------
 SimpleBinsSet performance tuning:
 Maxval is 100000000, Maxelem is 4000000
-Initialize time is 275ms.
-Insert time is 168ms.
-Report time is 95ms.
+Initialize time is 273ms.
+Insert time is 317ms.
+Report time is 93ms.
 
-Total time is 538ms.
+Total time is 683ms.
 ------------------------------------------
+
