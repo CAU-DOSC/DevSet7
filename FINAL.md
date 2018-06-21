@@ -1,4 +1,4 @@
-## Result Analysis
+# Result Analysis
 ## Simple Bins
 Use each element's value as the bin's key.  
 Use array as the container.
@@ -39,7 +39,26 @@ But if the inserted numbers are randomly disturbed well, performance will not ba
 O(M), M is the Maxelem
 More precisely, 2M. M for buckets, M for elements.
 
-### TreeMap Bins
+## Binary Search Tree
+
+Each element has the two subtrees on the both sides of it.
+In order to search a desired value, it is required to traversal a BST leftwards or rightwards.
+
+#### Time complexity
+1. Insert: O(log n)
+On average, it takes log n time to find the position of the value to be inserted.
+2. Report: O(nlog n)
+On average, for n(maxval), it takes n * log n time to arrive at all of the elements in a tree.
+
+#### Space complexity
+Space complexity for the binary search tree is : O(n)
+
+#### Analysis
+The insertion of unit test codes increases the overall operation time of a code.
+However, this sort of unit test guarantees the integrity for the code.
+Therefore, there is a trade-off relationship between the performance(operation speed) and integrity of code.
+
+## TreeMap Bins
 I thought use a TreeMap may reduce the time to check if there are already same
 int in the set, because the time complexity of TreeMap is O(logN).
 
@@ -53,8 +72,8 @@ added somewhere else.
 #### Space complexity
 O(N), N is the Maxelem.
 
-### Performance tuning
-#### SimpleBinSet
+# Performance tuning
+## SimpleBinSet
 ```
 ------------------------------------------
 SimpleBinsSet performance tuning:
@@ -117,7 +136,7 @@ Total time is 683ms.
 ------------------------------------------
 ```
 
-#### ArrayListBinsSet
+## ArrayListBinsSet
 ```
 ------------------------------------------
 ArrayListBinsSet performance tuning:
@@ -180,7 +199,66 @@ Total time is 4409ms.
 ------------------------------------------
 ```
 
-#### TreeMapBinsSet
+## BinarySearchTreeSet
+```
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 10000
+Initialize time is: 0ms
+Insert time is: 3ms
+Report time is: 2ms
+
+Total time is: 6ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 20000
+Initialize time is: 0ms
+Insert time is: 4ms
+Report time is: 2ms
+
+Total time is: 6ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 40000
+Initialize time is: 0ms
+Insert time is: 9ms
+Report time is: 3ms
+
+Total time is: 12ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 1000000
+Initialize time is: 0ms
+Insert time is: 640ms
+Report time is: 63ms
+
+Total time is: 703ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 2000000
+Initialize time is: 0ms
+Insert time is: 1004ms
+Report time is: 505ms
+
+Total time is: 1509ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 4000000
+Initialize time is: 0ms
+Insert time is: 2438ms
+Report time is: 574ms
+
+Total time is: 3012ms
+------------------------------------------
+
+```
+
+## TreeMapBinsSet
 ```
 ------------------------------------------
 TreeMapBinsSet performance tuning:
@@ -243,21 +321,4 @@ Total time is 8339ms.
 ------------------------------------------
 ```
 
-## IntSetBST
-### Binary Search Tree 
-Each element has the two subtrees on the both sides of it.
-In order to search a desired value, it is required to traversal a BST leftwards or rightwards.
 
-### Time complexity
-1. Insert: O(log n)
-On average, it takes log n time to find the position of the value to be inserted.
-2. Report: O(nlog n)
-On average, for n(maxval), it takes n * log n time to arrive at all of the elements in a tree.
-
-### Space complexity
-Space complexity for the binary search tree is : O(n)
-
-### Analysis
-The insertion of unit test codes increases the overall operation time of a code.
-However, this sort of unit test guarantees the integrity for the code.
-Therefore, there is a trade-off relationship between the performance(operation speed) and integrity of code.
