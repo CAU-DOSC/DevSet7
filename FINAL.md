@@ -1,5 +1,5 @@
-## IntSetBIns
-### Simple Bins
+## Result Analysis
+## Simple Bins
 Use each element's value as the bin's key.  
 Use array as the container.
 
@@ -17,7 +17,7 @@ Because we use elements' value as the key of the bin, to make sure any int of
 [0, maxval) can be insert, we have to create a array[maxval] even there is just
 one number be inserted.
 
-### ArrayList Bins
+## ArrayList Bins
 The SimpleBins set is very fast cus all the operation depends on array and no
 sort be needed.
 
