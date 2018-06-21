@@ -30,16 +30,32 @@ Maxelem to reduce the time of check 'if already in the set'.
 This apporach will slowr than Simple Bins but reduce the space complexity.
 
 #### Time complexity
-1. Insert: O(M^2), M is the Maxelem  
+1. Insert: O(M), M is the Maxelem  
 This worst case occurs when all the element belong to same bucket.
+But if the inserted numbers are randomly disturbed well, performance will not bad.
 2. report: O(S*logS), S is the bucket size (Maxval/Maxelem)
 
 #### Space complexity
 O(M), M is the Maxelem
 More precisely, 2M. M for buckets, M for elements.
 
+### TreeMap Bins
+I thought use a TreeMap may reduce the time to check if there are already same
+int in the set, because the time complexity of TreeMap is O(logN).
+
+But do not know why, the actual result is not well. Perhaps the overheads were
+added somewhere else.
+
+#### Time complexity
+1. Insert: O(logM), M is the bucket size
+2. Report: O(N), N is the Maxelem
+
+#### Space complexity
+O(N), N is the Maxelem.
+
 ### Performance tuning
 #### SimpleBinSet
+```
 ------------------------------------------
 SimpleBinsSet performance tuning:
 Maxval is 1000000, Maxelem is 10000
@@ -99,8 +115,10 @@ Report time is 93ms.
 
 Total time is 683ms.
 ------------------------------------------
+```
 
 #### ArrayListBinsSet
+```
 ------------------------------------------
 ArrayListBinsSet performance tuning:
 Maxval is 1000000, Maxelem is 10000
@@ -160,3 +178,67 @@ Report time is 179ms.
 
 Total time is 4409ms.
 ------------------------------------------
+```
+
+#### TreeMapBinsSet
+```
+------------------------------------------
+TreeMapBinsSet performance tuning:
+Maxval is 1000000, Maxelem is 10000
+Initialize time is 4ms.
+Insert time is 12ms.
+Report time is 7ms.
+
+Total time is 23ms.
+------------------------------------------
+
+------------------------------------------
+TreeMapBinsSet performance tuning:
+Maxval is 1000000, Maxelem is 20000
+Initialize time is 3ms.
+Insert time is 20ms.
+Report time is 8ms.
+
+Total time is 31ms.
+------------------------------------------
+
+------------------------------------------
+TreeMapBinsSet performance tuning:
+Maxval is 1000000, Maxelem is 40000
+Initialize time is 2ms.
+Insert time is 34ms.
+Report time is 10ms.
+
+Total time is 46ms.
+------------------------------------------
+
+------------------------------------------
+TreeMapBinsSet performance tuning:
+Maxval is 100000000, Maxelem is 1000000
+Initialize time is 2ms.
+Insert time is 1161ms.
+Report time is 37ms.
+
+Total time is 1200ms.
+------------------------------------------
+
+------------------------------------------
+TreeMapBinsSet performance tuning:
+Maxval is 100000000, Maxelem is 2000000
+Initialize time is 3ms.
+Insert time is 2155ms.
+Report time is 111ms.
+
+Total time is 2269ms.
+------------------------------------------
+
+------------------------------------------
+TreeMapBinsSet performance tuning:
+Maxval is 100000000, Maxelem is 4000000
+Initialize time is 4ms.
+Insert time is 8121ms.
+Report time is 214ms.
+
+Total time is 8339ms.
+------------------------------------------
+```

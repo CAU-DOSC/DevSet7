@@ -1,7 +1,6 @@
 package com.set.test;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 import com.set.IntSetBins;
 
@@ -21,7 +20,6 @@ class PerformanceArrayListBins {
 		
 		// Insert part
 		startTime = System.currentTimeMillis();
-		//int random;
 		Random random = new Random();
 		while (set.size() < maxelem) {
 			//random = ThreadLocalRandom.current().nextInt(0, maxval);
@@ -50,9 +48,9 @@ class PerformanceArrayListBins {
 		final int MAXVALUE_6 = 1000000;
 		final int MAXVALUE_8 = 100000000;
 		
-		//tuning(100, MAXVALUE_6);
-		//tuning(50, MAXVALUE_6);
-		//tuning(25, MAXVALUE_6);
+		tuning(100, MAXVALUE_6);
+		tuning(50, MAXVALUE_6);
+		tuning(25, MAXVALUE_6);
 
 		tuning(100, MAXVALUE_8);
 		tuning(50, MAXVALUE_8);

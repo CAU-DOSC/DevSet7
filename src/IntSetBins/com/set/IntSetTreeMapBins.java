@@ -45,13 +45,13 @@ public class IntSetTreeMapBins {
         this.element_num = 0;
     	this.maxval = maxval;
         this.maxelem = maxelements;
-        if (maxval < maxelem)
-        	maxelem = maxval;
         
-		this.bucket_size = maxval/maxelem;
+		this.bucket_size = maxval/1000;
+		if (bucket_size == 0)
+			bucket_size = 1;
         
-        this.bucket = new ArrayList<TreeMap<Integer, Integer>>(maxelem + 1);
-        for (int i = 0; i < maxelem+1; i++)
+        this.bucket = new ArrayList<TreeMap<Integer, Integer>>(1000);
+        for (int i = 0; i < 1000; i++)
         	bucket.add(new TreeMap<Integer, Integer>());
     }
 
