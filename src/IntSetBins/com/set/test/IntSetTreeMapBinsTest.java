@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.set.IntSetBins;
+import com.set.IntSetTreeMapBins;
 
-class IntSetBinsTest {
+class IntSetTreeMapBinsTest {
 
 	// smoke test
 	@Test
@@ -16,7 +16,7 @@ class IntSetBinsTest {
         int[] num = {3, 2, 5, 4, 1};
         int m = num.length;
 
-        IntSetBins set = new IntSetBins(5, 6);
+        IntSetTreeMapBins set = new IntSetTreeMapBins(5, 6);
         for (int i = 0; i < m; i++) {
             set.insert(num[i]);
         }
@@ -32,7 +32,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 1000;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
 		for (int i = 0; i < maxelem; i++) {
 			int randomN = ThreadLocalRandom.current().nextInt(0, maxval);
 			set.insert(randomN);
@@ -48,7 +48,7 @@ class IntSetBinsTest {
         int[] num = {1, 2, 3, 3, 2, 1};
         int m = num.length;
 
-        IntSetBins set = new IntSetBins(6, 4);
+        IntSetTreeMapBins set = new IntSetTreeMapBins(6, 4);
         for (int i = 0; i < m; i++) {
             set.insert(num[i]);
         }
@@ -66,7 +66,7 @@ class IntSetBinsTest {
 		int maxelem = 0;
 		int maxval = 10;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
 		assertThrows(NullPointerException.class, () -> {
 			set.report();
 		});
@@ -77,7 +77,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 1;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
 		set.insert(0);
 		int[] result = set.report();
 
@@ -90,7 +90,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 10;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
 		set.insert(maxval - 1);
 		int[] result = set.report();
 
@@ -103,7 +103,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 10;
 
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
 		set.insert(maxval + 1);
 		
 		assertEquals(0, set.size());
@@ -114,7 +114,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 10;
 
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
 		set.insert(-1);
 		
 		assertEquals(0, set.size());
@@ -125,7 +125,7 @@ class IntSetBinsTest {
 		int maxelem = 1000000;
 		int maxval = 100000000;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
 		Random random = new Random();
 		while(set.size() < maxelem) {
 			set.insert(random.nextInt(maxval));

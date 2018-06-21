@@ -1,14 +1,14 @@
 package com.set.test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
-import com.set.IntSetBins;
+import com.set.IntSetSimpleBins;
 
-class IntSetBinsTest {
+class IntSetSimpleBinsTest {
 
 	// smoke test
 	@Test
@@ -16,7 +16,7 @@ class IntSetBinsTest {
         int[] num = {3, 2, 5, 4, 1};
         int m = num.length;
 
-        IntSetBins set = new IntSetBins(5, 6);
+        IntSetSimpleBins set = new IntSetSimpleBins(5, 6);
         for (int i = 0; i < m; i++) {
             set.insert(num[i]);
         }
@@ -32,10 +32,10 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 1000;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
+		Random random = new Random();
 		for (int i = 0; i < maxelem; i++) {
-			int randomN = ThreadLocalRandom.current().nextInt(0, maxval);
-			set.insert(randomN);
+			set.insert(random.nextInt(maxval));
 		}
 		int[] result = set.report();
 
@@ -48,7 +48,7 @@ class IntSetBinsTest {
         int[] num = {1, 2, 3, 3, 2, 1};
         int m = num.length;
 
-        IntSetBins set = new IntSetBins(6, 4);
+        IntSetSimpleBins set = new IntSetSimpleBins(6, 4);
         for (int i = 0; i < m; i++) {
             set.insert(num[i]);
         }
@@ -66,10 +66,10 @@ class IntSetBinsTest {
 		int maxelem = 0;
 		int maxval = 10;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
-		assertThrows(NullPointerException.class, () -> {
-			set.report();
-		});
+		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
+		int[] result = set.report();
+		assertEquals(0, set.size());
+		assertNull(result);
 	}
 	
 	@Test
@@ -77,7 +77,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 1;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
 		set.insert(0);
 		int[] result = set.report();
 
@@ -90,7 +90,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 10;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
 		set.insert(maxval - 1);
 		int[] result = set.report();
 
@@ -103,7 +103,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 10;
 
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
 		set.insert(maxval + 1);
 		
 		assertEquals(0, set.size());
@@ -114,7 +114,7 @@ class IntSetBinsTest {
 		int maxelem = 10;
 		int maxval = 10;
 
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
 		set.insert(-1);
 		
 		assertEquals(0, set.size());
@@ -125,12 +125,14 @@ class IntSetBinsTest {
 		int maxelem = 1000000;
 		int maxval = 100000000;
 		
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetSimpleBins set = new IntSetSimpleBins(maxelem, maxval);
 		Random random = new Random();
 		while(set.size() < maxelem) {
 			set.insert(random.nextInt(maxval));
 		}
 		
 		assertEquals(1000000, set.size());
+		
 	}
+	
 }
