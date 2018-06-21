@@ -67,9 +67,9 @@ class IntSetBinsTest {
 		int maxval = 10;
 		
 		IntSetBins set = new IntSetBins(maxelem, maxval);
-		int[] result = set.report();
-		assertEquals(0, set.size());
-		assertNull(result);
+		assertThrows(NullPointerException.class, () -> {
+			set.report();
+		});
 	}
 	
 	@Test

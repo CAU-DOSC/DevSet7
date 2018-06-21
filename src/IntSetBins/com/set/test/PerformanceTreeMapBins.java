@@ -1,11 +1,9 @@
 package com.set.test;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
+import com.set.IntSetTreeMapBins;
 
-import com.set.IntSetBins;
-
-class ArrayListBinsPerformance {
+class PerformanceTreeMapBins {
 
 	public static void tuning(int element_div, int maxval) {
 		int maxelem = maxval/element_div;
@@ -15,7 +13,7 @@ class ArrayListBinsPerformance {
 		
 		// Initial part
 		long startTime = System.currentTimeMillis();
-		IntSetBins set = new IntSetBins(maxelem, maxval);
+		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
 		long stopTime = System.currentTimeMillis();
 		init_time = stopTime - startTime;
 		
@@ -37,7 +35,7 @@ class ArrayListBinsPerformance {
 		report_time = stopTime - startTime;
 		
 		System.out.println("------------------------------------------");
-		System.out.println("ArrayListBinsSet performance tuning:");
+		System.out.println("TreeMapBinsSet performance tuning:");
 		System.out.println("Maxval is " + maxval + ", Maxelem is " + maxelem);
 		System.out.println("Initialize time is " + init_time + "ms.");
 		System.out.println("Insert time is " + insert_time + "ms.");
@@ -55,7 +53,7 @@ class ArrayListBinsPerformance {
 		//tuning(25, MAXVALUE_6);
 
 		tuning(100, MAXVALUE_8);
-		tuning(50, MAXVALUE_8);
-		tuning(25, MAXVALUE_8);
+		//tuning(50, MAXVALUE_8);
+		//tuning(25, MAXVALUE_8);
 	}
 }

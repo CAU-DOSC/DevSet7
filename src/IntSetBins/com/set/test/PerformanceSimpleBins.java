@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.set.IntSetSimpleBins;
 
-class SimpleBinsPerformance {
+class PerformanceSimpleBins {
 
 	public static void tuning(int element_div, int maxval) {
 		int maxelem = maxval/element_div;

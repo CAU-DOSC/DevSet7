@@ -1,9 +1,11 @@
 package com.set;
 
+import java.util.TreeMap;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
-public class IntSetBins {
+public class IntSetTreeMapBins {
 	/* A set implementation by simple bins.
 	 * 
 	 * @Attributes:
@@ -13,19 +15,19 @@ public class IntSetBins {
 	 *	bucket: a list that each element is a arraylist to store element.
 	 *
 	 * @Method:
-	 * IntSetBins(): Constructor. Build the initial empty set.
+	 * IntSetTreeMapBins(): Constructor. Build the initial empty set.
 	 * insert(): insert an integer into the set if there is not same one. 
 	 * report(): sort the elements in the set.
 	 */
 	
-    private ArrayList<ArrayList<Integer>> bucket;
+    private List<TreeMap<Integer, Integer>> bucket;
     private int element_num;
     private int maxval;
     private int maxelem;
     private int bucket_size;
 
 
-    public IntSetBins(int maxelements, int maxval) {
+    public IntSetTreeMapBins(int maxelements, int maxval) {
     	/* Set initialization.
     	 * 
     	 * Use number of maxelem buckets to store the inserted elements.
@@ -48,9 +50,9 @@ public class IntSetBins {
         
 		this.bucket_size = maxval/maxelem;
         
-        this.bucket = new ArrayList<ArrayList<Integer>>(maxelem+1);
+        this.bucket = new ArrayList<TreeMap<Integer, Integer>>(maxelem + 1);
         for (int i = 0; i < maxelem+1; i++)
-        	bucket.add(new ArrayList<Integer>());
+        	bucket.add(new TreeMap<Integer, Integer>());
     }
 
     public void insert(int element) {
@@ -67,29 +69,27 @@ public class IntSetBins {
     		return;
 
     	int index = element / bucket_size;
-    	ArrayList<Integer> bucket_elem = bucket.get(index);
-    	if (bucket_elem.contains(element))
+    	TreeMap<Integer, Integer> bucket_elem = bucket.get(index);
+    	if (bucket_elem.containsKey(element))
     		return;
-    	bucket_elem.add(element);
-    	//bucket.get(index).add(element);
+    	bucket_elem.put(element, element);
     	this.element_num++;
 	}
 
     public int[] report() {
-    	/* Sort the element in the set.
-    	 * 
+    	/* Traverse the TreeMap to get the ordered elements.
+    	 *  
     	 * @Return:
     	 * 	int array which contains sorted set elements.
     	 */
 
         int[] array = new int[this.element_num];
         int pos = 0;
-        for (ArrayList<Integer> list : this.bucket) {
+        for (TreeMap<Integer, Integer> list : this.bucket) {
         	if (list.isEmpty())
         		continue;
-        	Collections.sort(list);
-        	for (int num : list)
-        		array[pos++] = num;
+        	for (Map.Entry<Integer, Integer> entry : list.entrySet())
+        		array[pos++] = entry.getValue();
         }
         if (array.length == 0)
         	return null;
@@ -100,4 +100,5 @@ public class IntSetBins {
     	// return the number of elements in the set.
         return this.element_num;
     }
+
 }
