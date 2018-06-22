@@ -72,6 +72,21 @@ added somewhere else.
 #### Space complexity
 O(N), N is the Maxelem.
 
+## Simple List
+Simple Linked list's node has value and next node.
+To implement set, node's value is must smaller than next node.
+If now value is smaller than inputed value, goto next node.
+If now value is equal to inputed value, break loop and return.
+If now value is bigger than inputed value, goto previous node and add inputed value node.
+By this, easy to check duplicated value and print report.
+
+#### Time complexity
+1. insert: O(N), N is maxelems
+2. report: O(N), N is maxelems
+
+#### Space complexity
+O(N), N is maxelems
+
 # Performance tuning
 ## SimpleBinSet
 ```
@@ -321,4 +336,36 @@ Total time is 8339ms.
 ------------------------------------------
 ```
 
+## SimpleListSet
+```
+------------------------------------------
+SimpleListSet performance tuning:
+Maxcal is 1000000, Maxelem is 10000
+Initialize time is 0ms.
+Insert time is 207ms.
+Report time is : 0ms.
+
+Total time is 209ms.
+------------------------------------------
+
+------------------------------------------
+SimpleListSet performance tuning:
+Maxcal is 1000000, Maxelem is 20000
+Initialize time is 0ms.
+Insert time is 1162ms.
+Report time is : 1ms.
+
+Total time is 1164ms.
+------------------------------------------
+
+------------------------------------------
+SimpleListSet performance tuning:
+Maxcal is 1000000, Maxelem is 40000
+Initialize time is 0ms.
+Insert time is 5755ms.
+Report time is : 1ms.
+
+Total time is 5757ms.
+------------------------------------------
+```
 
