@@ -336,7 +336,7 @@ Total time is: 3012ms
 ## Bit Vector
 ```
 ------------------------------------------
-BinarySearchTreeset performance tuning: 
+BitVector performance tuning: 
 Maxval is 1000000, Maxelems is 10000
 Initialize time is: 0ms
 Insert time is: 2ms
@@ -345,7 +345,7 @@ Report time is: 8ms
 Total time is: 17ms
 ------------------------------------------
 ------------------------------------------
-BinarySearchTreeset performance tuning: 
+BitVector performance tuning: 
 Maxval is 1000000, Maxelems is 20000
 Initialize time is: 0ms
 Insert time is: 3ms
@@ -354,7 +354,7 @@ Report time is: 7ms
 Total time is: 17ms
 ------------------------------------------
 ------------------------------------------
-BinarySearchTreeset performance tuning: 
+BitVector performance tuning: 
 Maxval is 1000000, Maxelems is 40000
 Initialize time is: 0ms
 Insert time is: 4ms
@@ -363,7 +363,7 @@ Report time is: 8ms
 Total time is: 19ms
 ------------------------------------------
 ------------------------------------------
-BinarySearchTreeset performance tuning: 
+BitVector performance tuning: 
 Maxval is 1000000, Maxelems is 1000000
 Initialize time is: 0ms
 Insert time is: 59ms
@@ -372,7 +372,7 @@ Report time is: 109ms
 Total time is: 331ms
 ------------------------------------------
 ------------------------------------------
-BinarySearchTreeset performance tuning: 
+BitVector performance tuning: 
 Maxval is 1000000, Maxelems is 2000000
 Initialize time is: 0ms
 Insert time is: 107ms
@@ -381,7 +381,7 @@ Report time is: 133ms
 Total time is: 403ms
 ------------------------------------------
 ------------------------------------------
-BinarySearchTreeset performance tuning: 
+BitVector performance tuning: 
 Maxval is 1000000, Maxelems is 4000000
 Initialize time is: 0ms
 Insert time is: 203ms
