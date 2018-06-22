@@ -91,7 +91,11 @@ To implement set, node's value is must smaller than next node.
 If now value is smaller than inputed value, goto next node.
 If now value is equal to inputed value, break loop and return.
 If now value is bigger than inputed value, goto previous node and add inputed value node.
-By this, easy to check duplicated value and print report.
+By this, easy to check duplicated value and print report.  
+
+Different to array, linked list can`t random access.
+So same O(N), but much slower.
+At performance tuning, 10^6 can result, but 10^8 too much slow, can not result. 
 
 #### Time complexity
 1. insert: O(N), N is maxelems
