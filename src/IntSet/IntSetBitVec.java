@@ -27,7 +27,7 @@ public class IntSetBitVec {
 
 	int size() { return n; }
 
-	void insert(int t) { // report time complexity : O(1)
+	void insert(int t) { // insert time complexity : O(1)
 	if (test(t) > 0)
 		return;
 	
