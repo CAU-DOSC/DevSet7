@@ -39,6 +39,20 @@ But if the inserted numbers are randomly disturbed well, performance will not ba
 O(M), M is the Maxelem
 More precisely, 2M. M for buckets, M for elements.
 
+## TreeMap Bins
+I thought use a TreeMap may reduce the time to check if there are already same
+int in the set, because the time complexity of TreeMap is O(logN).
+
+But do not know why, the actual result is not well. Perhaps the overheads were
+added somewhere else.
+
+#### Time complexity
+1. Insert: O(logM), M is the bucket size
+2. Report: O(N), N is the Maxelem
+
+#### Space complexity
+O(N), N is the Maxelem.
+
 ## Binary Search Tree
 
 Each element has the two subtrees on the both sides of it.
@@ -58,19 +72,18 @@ The insertion of unit test codes increases the overall operation time of a code.
 However, this sort of unit test guarantees the integrity for the code.
 Therefore, there is a trade-off relationship between the performance(operation speed) and integrity of code.
 
-## TreeMap Bins
-I thought use a TreeMap may reduce the time to check if there are already same
-int in the set, because the time complexity of TreeMap is O(logN).
+## Bit Vector
+Bit Vector is algorithm that represent a set of duplicate integers in bits.
+You can save a lot of space with the algorithm.
 
-But do not know why, the actual result is not well. Perhaps the overheads were
-added somewhere else.
+#### Time Complexity
+1. Insert : O(1)
+2. Report : O(n)
+You do not have to check all the other numbers for each number
 
-#### Time complexity
-1. Insert: O(logM), M is the bucket size
-2. Report: O(N), N is the Maxelem
+#### Space Complexity
+O(1). Bit Vector has a constant space complexity.
 
-#### Space complexity
-O(N), N is the Maxelem.
 
 ## Simple List
 Simple Linked list's node has value and next node.
@@ -214,65 +227,6 @@ Total time is 4409ms.
 ------------------------------------------
 ```
 
-## BinarySearchTreeSet
-```
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 1000000, Maxelems is 10000
-Initialize time is: 0ms
-Insert time is: 3ms
-Report time is: 2ms
-
-Total time is: 6ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 1000000, Maxelems is 20000
-Initialize time is: 0ms
-Insert time is: 4ms
-Report time is: 2ms
-
-Total time is: 6ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 1000000, Maxelems is 40000
-Initialize time is: 0ms
-Insert time is: 9ms
-Report time is: 3ms
-
-Total time is: 12ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 100000000, Maxelems is 1000000
-Initialize time is: 0ms
-Insert time is: 640ms
-Report time is: 63ms
-
-Total time is: 703ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 100000000, Maxelems is 2000000
-Initialize time is: 0ms
-Insert time is: 1004ms
-Report time is: 505ms
-
-Total time is: 1509ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 100000000, Maxelems is 4000000
-Initialize time is: 0ms
-Insert time is: 2438ms
-Report time is: 574ms
-
-Total time is: 3012ms
-------------------------------------------
-
-```
-
 ## TreeMapBinsSet
 ```
 ------------------------------------------
@@ -336,6 +290,122 @@ Total time is 8339ms.
 ------------------------------------------
 ```
 
+## BinarySearchTreeSet
+```
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 10000
+Initialize time is: 0ms
+Insert time is: 3ms
+Report time is: 2ms
+
+Total time is: 6ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 20000
+Initialize time is: 0ms
+Insert time is: 4ms
+Report time is: 2ms
+
+Total time is: 6ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 40000
+Initialize time is: 0ms
+Insert time is: 9ms
+Report time is: 3ms
+
+Total time is: 12ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 1000000
+Initialize time is: 0ms
+Insert time is: 640ms
+Report time is: 63ms
+
+Total time is: 703ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 2000000
+Initialize time is: 0ms
+Insert time is: 1004ms
+Report time is: 505ms
+
+Total time is: 1509ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 4000000
+Initialize time is: 0ms
+Insert time is: 2438ms
+Report time is: 574ms
+
+Total time is: 3012ms
+------------------------------------------
+```
+
+## Bit Vector
+```
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 10000
+Initialize time is: 0ms
+Insert time is: 2ms
+Report time is: 8ms
+
+Total time is: 17ms
+------------------------------------------
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 20000
+Initialize time is: 0ms
+Insert time is: 3ms
+Report time is: 7ms
+
+Total time is: 17ms
+------------------------------------------
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 40000
+Initialize time is: 0ms
+Insert time is: 4ms
+Report time is: 8ms
+
+Total time is: 19ms
+------------------------------------------
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 1000000
+Initialize time is: 0ms
+Insert time is: 59ms
+Report time is: 109ms
+
+Total time is: 331ms
+------------------------------------------
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 2000000
+Initialize time is: 0ms
+Insert time is: 107ms
+Report time is: 133ms
+
+Total time is: 403ms
+------------------------------------------
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 4000000
+Initialize time is: 0ms
+Insert time is: 203ms
+Report time is: 148ms
+
+Total time is: 515ms
+------------------------------------------
+```
+
 ## SimpleListSet
 ```
 ------------------------------------------
@@ -368,4 +438,3 @@ Report time is : 1ms.
 Total time is 5757ms.
 ------------------------------------------
 ```
-
