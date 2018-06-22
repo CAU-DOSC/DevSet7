@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class IntSetBST {
-	int maxelems;
-	int maxval;
-	int num;
+	public int maxelems;
+	public int maxval;
+	public int num;
 
 	Node root;
 
@@ -59,7 +59,7 @@ public class IntSetBST {
 		traversal(v, this.root);
 
 		long finishTime = System.currentTimeMillis() - startTime;
-
+		
 		System.out.println("The time elapsed for the 'report' operation is: " + finishTime + "ms");
 	}
 
@@ -73,7 +73,6 @@ public class IntSetBST {
 	}
 
 	public static void genSets(int maxelems, int maxval) { // create an instance of a binary search tree
-
 		long startTimeForEntire = System.currentTimeMillis();
 
 		Random rand = new Random();

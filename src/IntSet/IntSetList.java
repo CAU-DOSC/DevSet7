@@ -1,6 +1,9 @@
 package IntSet;
 
-public class IntSetList {
+import java.util.ArrayList;
+import java.util.Random;
+
+public class IntSetList implements IntSet {
 	int maxelems;
 	int maxval;
 	int size;
@@ -11,6 +14,18 @@ public class IntSetList {
 		this.maxval = 0;
 		this.size = 0;
 		this.head = null;
+	}
+	
+	int maxelems() {
+		return this.maxelems;
+	}
+	
+	int maxval() {
+		return this.maxval;
+	}
+	
+	Node head() {
+		return this.head;
 	}
 	
 	public void intSetImp(int maxelems, int maxval) {
@@ -72,7 +87,7 @@ public class IntSetList {
 	}
 	
 	public static void main(String[] args) {		// driver
-		IntSetList set = new IntSetList();
+		IntSet set = new IntSetList();
 		set.intSetImp(10, 10);
 		int[] input = {2, 4, 1, 6, 3, 2, 7, 4, 3, 1, 5};
 		
@@ -87,7 +102,7 @@ public class IntSetList {
 		}
 		System.out.println();
 	}
-		
+	
 	class Node {
 		int value;
 		Node next;
@@ -99,6 +114,14 @@ public class IntSetList {
 		
 		Node(int value) {
 			this(value, null);
+		}
+		
+		int value() {
+			return this.value;
+		}
+		
+		Node next() {
+			return this.next;
 		}
 	}
 
