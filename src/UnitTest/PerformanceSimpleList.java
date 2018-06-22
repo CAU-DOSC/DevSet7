@@ -4,48 +4,56 @@ import java.util.Random;
 import IntSet.IntSetList;
 
 public class PerformanceSimpleList {
-	public static void tuning(int element_div, int maxval) {
-		int maxelem = maxval / element_div;
-		long init_time = 0;
-		long insert_time = 0;
-		long report_time = 0;
+	public static void tuning(int maxelems, int maxval) { // create an instance of a binary search tree
 
-		// Initail part
-		long startTime = System.currentTimeMillis();
-		IntSetList set = new IntSetList();
-		set.intSetImp(maxelem, maxval);
-		long stopTime = System.currentTimeMillis();
-		init_time = stopTime - startTime;
+		long startTimeForEntire = System.currentTimeMillis();
 
-		// Insert part
-		startTime = System.currentTimeMillis();
-		Random random = new Random();
-		while (set.size() < maxelem) {
-			set.insert(random.nextInt(maxval));
-		}
-		stopTime = System.currentTimeMillis();
-		insert_time = stopTime - startTime;
-
-		// Report part
-		startTime = System.currentTimeMillis();
-		set.report();
-		stopTime = System.currentTimeMillis();
-		report_time = stopTime - startTime;
-
-		System.out.println("\n------------------------------------------");
+		Random rand = new Random();
+		
+		System.out.println("------------------------------------------");
 		System.out.println("SimpleListSet performance tuning:");
-		System.out.println("Maxval is " + maxval + ", Maxelem is " + maxelem);
-		System.out.println("Initialize time is " + init_time + "ms.");
-		System.out.println("Insert time is " + insert_time + "ms.");
-		System.out.println("Report time is " + report_time + "ms.\n");
-		System.out.println("Total time is " + (init_time + insert_time + report_time) + "ms.");
-		System.out.println("------------------------------------------\n");
+		System.out.println("Maxcal is " + maxval + ", Maxelem is " + maxelems);
+
+		long startTimeForInitial = System.currentTimeMillis();
+		
+		IntSetList test = new IntSetList();
+		test.intSetImp(maxelems, maxval);
+		
+		long finishTimeForInitial = System.currentTimeMillis() - startTimeForInitial;
+		System.out.println("Initialize time is " + finishTimeForInitial + "ms.");
+
+
+		long startTimeForInsert = System.currentTimeMillis();
+
+		for (int i = 0; i < test.maxelems; i++) {
+			test.insert(rand.nextInt(test.maxval)); // assign random numbers to the created array
+		}
+		long finishTimeForInsert = System.currentTimeMillis() - startTimeForInsert;
+		System.out.println("Insert time is " + finishTimeForInsert + "ms.");
+
+		long startTimeForReport = System.currentTimeMillis();
+		int[] v = test.report();
+		long finishTimeForReport = System.currentTimeMillis() - startTimeForReport;
+		System.out.println("Report time is : " + finishTimeForReport + "ms.");
+
+		long finishTimeForEntire = System.currentTimeMillis() - startTimeForEntire;
+		System.out.println("\nTotal time is " + finishTimeForEntire + "ms.");
+
+		System.out.println("------------------------------------------");
+		System.out.println();
 	}
 
-	public static void main(String args[]) {
-		final int MAXVALUE_6 = 1000000;
-		tuning(100, MAXVALUE_6);
-		tuning(50, MAXVALUE_6);
-		tuning(25, MAXVALUE_6);
+	public static void main(String[] args) {
+		int n = 1000000;
+		tuning(n/100, n);
+		tuning(n/50, n);
+		tuning(n/25, n);
+		/*
+		 * Too slow
+		n *= 100;
+		tuning(n/100, n);
+		tuning(n/50, n);
+		tuning(n/25, n);
+		*/
 	}
 }
