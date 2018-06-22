@@ -1,4 +1,4 @@
-package com.set;
+package IntSet;
 import java.util.Arrays;
 
 public class IntSetSimpleBins {

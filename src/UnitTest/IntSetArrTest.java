@@ -9,7 +9,7 @@ public class IntSetArrTest {
 
 	static Random r = new Random();;
 	IntSetArr arraySet = new IntSetArr();
-
+	
 	@Test
 	public void testIntSetImp() {
 		arraySet.intSetImp(10, 100);
@@ -24,9 +24,9 @@ public class IntSetArrTest {
 		while (arraySet.size() < 10) {
 			arraySet.insert(a++);
 		}
-		int[] arr = {0,1,2,3,4,5,6,7,8,9};
-		
-		for(int i = 0; i < 10; i++) {
+		int[] arr = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+		for (int i = 0; i < 10; i++) {
 			assertEquals(arr[i], arraySet.arr[i]);
 		}
 	}
@@ -47,8 +47,8 @@ public class IntSetArrTest {
 			arraySet.insert(r.nextInt(10));
 		}
 		arraySet.report();
-		int[] arr = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-		for(int i = 0; i < 10; i++) {
+		int[] arr = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		for (int i = 0; i < 10; i++) {
 			assertEquals(arr[i], arraySet.arr[i]);
 		}
 	}

@@ -25,9 +25,9 @@ public class IntSetBitVec {
 		m = 0;
 	}
 
-	int size() { return n; }
+	public int size() { return n; }
 
-	void insert(int t) { // insert time complexity : O(1)
+	public void insert(int t) { // insert time complexity : O(1)
 	if (test(t) > 0)
 		return;
 	
@@ -35,7 +35,7 @@ public class IntSetBitVec {
 	n++;
 	}
 
-	void report(int v[]) { // report time complexity : O(n)
+	public void report(int v[]) { // report time complexity : O(n)
 	int j = 0;
 	long startTime = System.currentTimeMillis();
 	for (int i = 0; i < maxval; i++)

@@ -1,6 +1,6 @@
 package IntSet;
 
-public class IntSetList implements IntSet {
+public class IntSetList {
 	int maxelems;
 	int maxval;
 	int size;
@@ -72,7 +72,7 @@ public class IntSetList implements IntSet {
 	}
 	
 	public static void main(String[] args) {		// driver
-		IntSet set = new IntSetList();
+		IntSetList set = new IntSetList();
 		set.intSetImp(10, 10);
 		int[] input = {2, 4, 1, 6, 3, 2, 7, 4, 3, 1, 5};
 		

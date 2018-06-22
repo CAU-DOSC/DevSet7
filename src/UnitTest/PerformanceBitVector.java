@@ -1,19 +1,21 @@
-package com.set.test;
+package UnitTest;
 
 import java.util.Random;
-import com.set.IntSetTreeMapBins;
 
-class PerformanceTreeMapBins {
+import IntSet.IntSetBitVec;
+
+class PerformanceBitVector {
 
 	public static void tuning(int element_div, int maxval) {
 		int maxelem = maxval/element_div;
 		long init_time = 0;
 		long insert_time = 0;
 		long report_time = 0;
+		int[] v = new int[maxelem];
 		
 		// Initial part
 		long startTime = System.currentTimeMillis();
-		IntSetTreeMapBins set = new IntSetTreeMapBins(maxelem, maxval);
+		IntSetBitVec set = new IntSetBitVec(maxelem, maxval);
 		long stopTime = System.currentTimeMillis();
 		init_time = stopTime - startTime;
 		
@@ -21,7 +23,6 @@ class PerformanceTreeMapBins {
 		startTime = System.currentTimeMillis();
 		Random random = new Random();
 		while (set.size() < maxelem) {
-			//random = ThreadLocalRandom.current().nextInt(0, maxval);
 			set.insert(random.nextInt(maxval));
 		}
 		stopTime = System.currentTimeMillis();
@@ -29,12 +30,12 @@ class PerformanceTreeMapBins {
 		
 		// Report part
 		startTime = System.currentTimeMillis();
-		set.report();
+		set.report(v);
 		stopTime = System.currentTimeMillis();
 		report_time = stopTime - startTime;
 		
 		System.out.println("------------------------------------------");
-		System.out.println("TreeMapBinsSet performance tuning:");
+		System.out.println("BitVector performance tuning:");
 		System.out.println("Maxval is " + maxval + ", Maxelem is " + maxelem);
 		System.out.println("Initialize time is " + init_time + "ms.");
 		System.out.println("Insert time is " + insert_time + "ms.");

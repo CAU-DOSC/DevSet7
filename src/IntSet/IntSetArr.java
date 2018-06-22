@@ -1,8 +1,8 @@
 package IntSet;
 
-import IntSet.IntSet;
+import java.util.Random;
 
-public class IntSetArr implements IntSet {
+public class IntSetArr {
 	public int[] arr;
 	public int size;
 	public int maxval;
@@ -12,13 +12,11 @@ public class IntSetArr implements IntSet {
 		maxval = 0;
 	}
 
-	@Override
 	public void intSetImp(int maxelems, int maxval) {
 		arr = new int[maxelems];
 		this.maxval = maxval;
 	}
 
-	@Override
 	public void insert(int element) {
 		if (size < arr.length && element < maxval) {
 			for (int i = 0; i < size; i++) {
@@ -31,12 +29,10 @@ public class IntSetArr implements IntSet {
 		}
 	}
 
-	@Override
 	public int size() {
 		return size;
 	}
 
-	@Override
 	public int[] report() {
 		quickSort(arr, 0, arr.length - 1);
 		return arr;
@@ -69,5 +65,32 @@ public class IntSetArr implements IntSet {
 		if (r > left) {
 			quickSort(data, left, r);
 		}
+	}
+	
+	public static void genSets(int maxelems, int maxval) {
+		Random r = new Random();
+		int[] v = new int[maxelems];
+
+		long start_time = System.currentTimeMillis();
+		IntSetArr arraySet = new IntSetArr();
+
+		arraySet.intSetImp(maxelems, maxval);
+
+		while (arraySet.size() < maxelems) {
+			arraySet.insert(r.nextInt(maxval));
+		}
+
+		v = arraySet.report();
+		long end_time = System.currentTimeMillis();
+		long timeDiff = end_time - start_time;
+
+		for (int i = 0; i < v.length; i++) {
+			System.out.println("v[" + i + "] = " + v[i]);
+		}
+		System.out.println("Execution time = " + timeDiff + "ms");
+	}
+	
+	public static void main(String[] args) {
+		genSets(100, 100); // Test Numbers
 	}
 }

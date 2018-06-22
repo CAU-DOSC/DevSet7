@@ -1,4 +1,4 @@
-package com.set.test;
+package UnitTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-import com.set.IntSetBins;
+import IntSet.IntSetBins;
 
 class IntSetBinsTest {
 
