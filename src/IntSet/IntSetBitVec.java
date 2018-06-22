@@ -28,6 +28,15 @@ public class IntSetBitVec {
 	public int size() { return n; }
 
 	public void insert(int t) { // insert time complexity : O(1)
+	// System.out.println("T : " + t);
+	
+	if (t > this.maxval)
+		return;
+	else if (t < 0)
+		return;
+	else if (n >= this.maxelems)
+		return;
+	
 	if (test(t) > 0)
 		return;
 	
@@ -66,6 +75,7 @@ public class IntSetBitVec {
 		for (int i = 0; i < test.maxelems; i++) {
 			test.insert(r.nextInt(test.maxval + 1));
 		}
+		test.insert(1);
 		long finishTimeForInsert = System.currentTimeMillis() - startTimeForInsert;
 		System.out.println("The time elapsed for the 'insert' operation is: " + finishTimeForInsert + "ms");
 

@@ -1,106 +1,89 @@
 package UnitTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.Random;
-
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import IntSet.IntSetBitVec;
 
+class IntSetBitVecTest {
 
-public class IntSetBitVecTest {
-	final int BITSPERWORD = 32;
-	final int SHIFT = 5;
-	final int MASK = 0x1F;
+	// smoke test
+	@Test
+	void smokeTestSpecific() {
+        int[] num = {3, 3, 5, 1, 2};
 
-	int maxelems;
-	int maxval;
-	int num;
-	int n, m;
-	int[] x;
-	
-	public IntSetBitVecTest(int maxelems, int maxval) {
-		this.maxelems = maxelems;
-		this.maxval = maxval;
-
-		x = new int[1 + maxval/BITSPERWORD];  // space complexity : O(1)
-
-		for (int i = 0; i < maxval; i++)
-			clr(i);
-		n = 0;
-		m = 0;
+        IntSetBitVec set = new IntSetBitVec(5, 5);
+        for (int i = 0; i < num.length; i++) {
+            set.insert(num[i]);
+        }
+        
+        int result = set.size();
+        int expect = 4;
+        assertEquals(expect, result);
 	}
 	
-	
 	@Test
-	int size() { return n; }
-	
-	@Test
-	public void insert(int t){
-		if (test(t) > 0)
-			return;
+	void smokeTestRandom() {
+		int maxelem = 10;
+		int maxval = 10;
 		
-		set(t);
-		n++;
-	}
-	
-	@Test
-	void report(int v[]) { // report time complexity : O(n)
-		int j = 0;
-		long startTime = System.currentTimeMillis();
-		for (int i = 0; i < maxval; i++)
-			if (test(i) > 0) {
-				v[j++] = i;
-			}
-		long finishTime = System.currentTimeMillis() - startTime;
-		System.out.println("The time elapsed for the 'report' operation is: " + finishTime + "ms");
+		IntSetBitVec set = new IntSetBitVec(maxelem, maxval);
+		for (int i = 0; i < maxelem; i++) {
+			int randomN = ThreadLocalRandom.current().nextInt(0, maxval);
+			set.insert(randomN);
 		}
+
+		assertTrue(set.size() <= maxelem);
+	}
 	
+	// boundary test
 	@Test
-	void set(int i) { x[i>>SHIFT] |= (1<<(i & MASK)); }
-
-	@Test
-	void clr(int i) { x[i>>SHIFT] &= ~(1<<(i & MASK)); }
-
-	@Test
-	int test(int i) { return x[i>>SHIFT] & (1<<(i & MASK)); }
+	void boundaryTestEmpty() {
+		int maxelem = 0;
+		int maxval = 10;
 		
-	
+		IntSetBitVec set = new IntSetBitVec(maxelem, maxval);
+		assertThrows(NullPointerException.class, () -> {
+			set.report();
+		});
+	}
 	
 	@Test
-	public static void genSets(int maxelems, int maxval) {
-		long startTimeForEntire = System.currentTimeMillis();
+	void boundaryTestOverBound() {
+		int maxelem = 5;
+		int maxval = 0;
 
-		Random r = new Random();
-		int[] v = new int[maxelems];
-
-		IntSetBitVecTest test = new IntSetBitVecTest(maxelems, maxval);
+		IntSetBitVec set = new IntSetBitVec(maxelem, maxval);
+		set.insert(maxval + 1);
 		
-		assertEquals(maxelems, test.maxelems);
-		assertEquals(maxval, test.maxval);
+		assertEquals(1, set.size());
+	}
 
-		long startTimeForInsert = System.currentTimeMillis();
+	@Test
+	void boundaryTestUnderBound() {
+		int maxelem = 5;
+		int maxval = 0;
 
-		for (int i = 0; i < test.maxelems; i++) {
-			test.insert(r.nextInt(test.maxval + 1));
+		IntSetBitVec set = new IntSetBitVec(maxelem, maxval);
+		set.insert(-1);
+		
+		assertEquals(1, set.size());
+	}
+	
+	@Test
+	void boundaryTestHugeElement() {
+		int maxelem = 1000000;
+		int maxval = 100000000;
+		
+		IntSetBitVec set = new IntSetBitVec(maxelem, maxval);
+		Random random = new Random();
+		while(set.size() < maxelem) {
+			set.insert(random.nextInt(maxval));
 		}
-		long finishTimeForInsert = System.currentTimeMillis() - startTimeForInsert;
-		System.out.println("The time elapsed for the 'insert' operation is: " + finishTimeForInsert + "ms");
-
-		test.report(v);
-
-		long finishTimeForEntire = System.currentTimeMillis() - startTimeForEntire;
-		System.out.println("The time elapsed for the entire operation is: " + finishTimeForEntire + "ms");
+		
+		assertsTrue(set.size() <= 1000000);
 	}
-	
-	@Test
-	public static void main(String[] args) {
-		genSets(10000, 1000000); // Test Numbers
-	}
-
-};
-	
-
-
+}
