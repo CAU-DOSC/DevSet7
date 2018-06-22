@@ -1,13 +1,12 @@
 package UnitTest;
 
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.Random;
 import org.junit.jupiter.api.Test;
+import java.util.Random;
 import IntSet.IntSetArr;
 
 public class IntSetArrTest {
-
-	static Random r = new Random();;
+	static Random r = new Random();
 	IntSetArr arraySet = new IntSetArr();
 	
 	@Test

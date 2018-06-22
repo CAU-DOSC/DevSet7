@@ -1,7 +1,6 @@
 package UnitTest;
 
 import java.util.Random;
-
 import IntSet.IntSetSimpleBins;
 
 class PerformanceSimpleBins {

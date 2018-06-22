@@ -1,11 +1,9 @@
-package IntSet;
+package UnitTest;
 
 import java.util.Random;
-
 import IntSet.IntSetList;
 
 public class PerformanceSimpleList {
-
 	public static void tuning(int maxelems, int maxval) { // create an instance of a binary search tree
 
 		long startTimeForEntire = System.currentTimeMillis();
@@ -58,5 +56,4 @@ public class PerformanceSimpleList {
 		tuning(n/25, n);
 		*/
 	}
-	
 }
