@@ -72,6 +72,19 @@ The insertion of unit test codes increases the overall operation time of a code.
 However, this sort of unit test guarantees the integrity for the code.
 Therefore, there is a trade-off relationship between the performance(operation speed) and integrity of code.
 
+## Bit Vector
+Bit Vector is algorithm that represent a set of duplicate integers in bits.
+You can save a lot of space with the algorithm.
+
+#### Time Complexity
+1. Insert : O(1)
+2. Report : O(n)
+You do not have to check all the other numbers for each number
+
+#### Space Complexity
+O(1). Bit Vector has a constant space complexity.
+
+
 # Performance tuning
 ## SimpleBinSet
 ```
@@ -318,5 +331,62 @@ Report time is: 574ms
 
 Total time is: 3012ms
 ------------------------------------------
+```
 
+## Bit Vector
+```
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 10000
+Initialize time is: 0ms
+Insert time is: 2ms
+Report time is: 8ms
+
+Total time is: 17ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 20000
+Initialize time is: 0ms
+Insert time is: 3ms
+Report time is: 7ms
+
+Total time is: 17ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 40000
+Initialize time is: 0ms
+Insert time is: 4ms
+Report time is: 8ms
+
+Total time is: 19ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 1000000
+Initialize time is: 0ms
+Insert time is: 59ms
+Report time is: 109ms
+
+Total time is: 331ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 2000000
+Initialize time is: 0ms
+Insert time is: 107ms
+Report time is: 133ms
+
+Total time is: 403ms
+------------------------------------------
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 4000000
+Initialize time is: 0ms
+Insert time is: 203ms
+Report time is: 148ms
+
+Total time is: 515ms
+------------------------------------------
 ```
