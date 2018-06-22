@@ -66,14 +66,12 @@ public class IntSetArr {
 			quickSort(data, left, r);
 		}
 	}
-	
+
 	public static void genSets(int maxelems, int maxval) {
 		Random r = new Random();
 		int[] v = new int[maxelems];
 
-		long start_time = System.currentTimeMillis();
 		IntSetArr arraySet = new IntSetArr();
-
 		arraySet.intSetImp(maxelems, maxval);
 
 		while (arraySet.size() < maxelems) {
@@ -81,15 +79,12 @@ public class IntSetArr {
 		}
 
 		v = arraySet.report();
-		long end_time = System.currentTimeMillis();
-		long timeDiff = end_time - start_time;
 
 		for (int i = 0; i < v.length; i++) {
 			System.out.println("v[" + i + "] = " + v[i]);
 		}
-		System.out.println("Execution time = " + timeDiff + "ms");
 	}
-	
+
 	public static void main(String[] args) {
 		genSets(100, 100); // Test Numbers
 	}

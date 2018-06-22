@@ -1,4 +1,69 @@
 # Result Analysis
+## Arrays
+Array is the simplest structure for implementing the set.
+
+#### Time Complexity
+1. Insert : O(NM), N is maxelems and M is items in array  
+If you want to insert a new item, you have to check all the items in array.  
+So it takes as long as the number of items in array.  
+2. Report : O(N^2), N is maxelems  
+Report section contains quick sort function. The time complexity of quick sort is O(N^2).
+
+#### Space Complexity
+O(N), N is maxelems  
+When you make an array, you have to specify the size of an array.  
+And the size of an array is the space complexity of the Array set.
+
+## Simple List
+Simple Linked list's node has value and next node.
+To implement set, node's value is must smaller than next node.
+If now value is smaller than inputed value, goto next node.
+If now value is equal to inputed value, break loop and return.
+If now value is bigger than inputed value, goto previous node and add inputed value node.
+By this, easy to check duplicated value and print report.  
+
+Different to array, linked list can`t random access.
+So same O(N), but much slower.
+At performance tuning, 10^6 can result, but 10^8 too much slow, can not result. 
+
+#### Time complexity
+1. insert: O(N), N is maxelems
+2. report: O(N), N is maxelems
+
+#### Space complexity
+O(N), N is maxelems
+
+## Binary Search Tree
+
+Each element has the two subtrees on the both sides of it.
+In order to search a desired value, it is required to traversal a BST leftwards or rightwards.
+
+#### Time complexity
+1. Insert: O(log n)
+On average, it takes log n time to find the position of the value to be inserted.
+2. Report: O(nlog n)
+On average, for n(maxval), it takes n * log n time to arrive at all of the elements in a tree.
+
+#### Space complexity
+Space complexity for the binary search tree is : O(n)
+
+#### Analysis
+The insertion of unit test codes increases the overall operation time of a code.
+However, this sort of unit test guarantees the integrity for the code.
+Therefore, there is a trade-off relationship between the performance(operation speed) and integrity of code.
+
+## Bit Vector
+Bit Vector is algorithm that represent a set of duplicate integers in bits.
+You can save a lot of space with the algorithm.
+
+#### Time Complexity
+1. Insert : O(1)
+2. Report : O(n)
+You do not have to check all the other numbers for each number
+
+#### Space Complexity
+O(1). Bit Vector has a constant space complexity.
+
 ## Simple Bins
 Use each element's value as the bin's key.  
 Use array as the container.
@@ -53,58 +118,231 @@ added somewhere else.
 #### Space complexity
 O(N), N is the Maxelem.
 
-## Binary Search Tree
+# Performance tuning
+## ArraySet
+```
+------------------------------------------
+ArraySet performance tuning:
+Maxval is 1000000, Maxelem is 10000
+Initialize time is 0ms.
+Insert time is 16ms.
+Report time is 0ms.
 
-Each element has the two subtrees on the both sides of it.
-In order to search a desired value, it is required to traversal a BST leftwards or rightwards.
+Total time is 16ms.
+------------------------------------------
 
-#### Time complexity
-1. Insert: O(log n)
-On average, it takes log n time to find the position of the value to be inserted.
-2. Report: O(nlog n)
-On average, for n(maxval), it takes n * log n time to arrive at all of the elements in a tree.
+------------------------------------------
+ArraySet performance tuning:
+Maxval is 1000000, Maxelem is 20000
+Initialize time is 0ms.
+Insert time is 46ms.
+Report time is 0ms.
 
-#### Space complexity
-Space complexity for the binary search tree is : O(n)
+Total time is 46ms.
+------------------------------------------
 
-#### Analysis
-The insertion of unit test codes increases the overall operation time of a code.
-However, this sort of unit test guarantees the integrity for the code.
-Therefore, there is a trade-off relationship between the performance(operation speed) and integrity of code.
+------------------------------------------
+ArraySet performance tuning:
+Maxval is 1000000, Maxelem is 40000
+Initialize time is 0ms.
+Insert time is 171ms.
+Report time is 0ms.
+
+Total time is 171ms.
+------------------------------------------
+
+------------------------------------------
+ArraySet performance tuning:
+Maxval is 100000000, Maxelem is 1000000
+Initialize time is 0ms.
+Insert time is 128037ms.
+Report time is 116ms.
+
+Total time is 128153ms.
+------------------------------------------
+
+------------------------------------------
+ArraySet performance tuning:
+Maxval is 100000000, Maxelem is 2000000
+Initialize time is 2ms.
+Insert time is 609689ms.
+Report time is 232ms.
+
+Total time is 609923ms.
+------------------------------------------
+
+------------------------------------------
+ArraySet performance tuning:
+Maxval is 100000000, Maxelem is 4000000
+Initialize time is 1ms.
+Insert time is 2611448ms.
+Report time is 498ms.
+
+Total time is 2611947ms.
+------------------------------------------
+
+```
+
+## SimpleListSet
+```
+------------------------------------------
+SimpleListSet performance tuning:
+Maxcal is 1000000, Maxelem is 10000
+Initialize time is 0ms.
+Insert time is 207ms.
+Report time is : 0ms.
+
+Total time is 209ms.
+------------------------------------------
+
+------------------------------------------
+SimpleListSet performance tuning:
+Maxcal is 1000000, Maxelem is 20000
+Initialize time is 0ms.
+Insert time is 1162ms.
+Report time is : 1ms.
+
+Total time is 1164ms.
+------------------------------------------
+
+------------------------------------------
+SimpleListSet performance tuning:
+Maxcal is 1000000, Maxelem is 40000
+Initialize time is 0ms.
+Insert time is 5755ms.
+Report time is : 1ms.
+
+Total time is 5757ms.
+------------------------------------------
+```
+
+## BinarySearchTreeSet
+```
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 10000
+Initialize time is: 0ms
+Insert time is: 3ms
+Report time is: 2ms
+
+Total time is: 6ms
+------------------------------------------
+
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 20000
+Initialize time is: 0ms
+Insert time is: 4ms
+Report time is: 2ms
+
+Total time is: 6ms
+------------------------------------------
+
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 1000000, Maxelems is 40000
+Initialize time is: 0ms
+Insert time is: 9ms
+Report time is: 3ms
+
+Total time is: 12ms
+------------------------------------------
+
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 1000000
+Initialize time is: 0ms
+Insert time is: 640ms
+Report time is: 63ms
+
+Total time is: 703ms
+------------------------------------------
+
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 2000000
+Initialize time is: 0ms
+Insert time is: 1004ms
+Report time is: 505ms
+
+Total time is: 1509ms
+------------------------------------------
+
+------------------------------------------
+BinarySearchTreeset performance tuning: 
+Maxval is 100000000, Maxelems is 4000000
+Initialize time is: 0ms
+Insert time is: 2438ms
+Report time is: 574ms
+
+Total time is: 3012ms
+------------------------------------------
+```
+
 
 ## Bit Vector
-Bit Vector is algorithm that represent a set of duplicate integers in bits.
-You can save a lot of space with the algorithm.
+```
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 10000
+Initialize time is: 0ms
+Insert time is: 2ms
+Report time is: 8ms
 
-#### Time Complexity
-1. Insert : O(1)
-2. Report : O(n)
-You do not have to check all the other numbers for each number
+Total time is: 17ms
+------------------------------------------
 
-#### Space Complexity
-O(1). Bit Vector has a constant space complexity.
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 20000
+Initialize time is: 0ms
+Insert time is: 3ms
+Report time is: 7ms
 
+Total time is: 17ms
+------------------------------------------
 
-## Simple List
-Simple Linked list's node has value and next node.
-To implement set, node's value is must smaller than next node.
-If now value is smaller than inputed value, goto next node.
-If now value is equal to inputed value, break loop and return.
-If now value is bigger than inputed value, goto previous node and add inputed value node.
-By this, easy to check duplicated value and print report.  
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 40000
+Initialize time is: 0ms
+Insert time is: 4ms
+Report time is: 8ms
 
-Different to array, linked list can`t random access.
-So same O(N), but much slower.
-At performance tuning, 10^6 can result, but 10^8 too much slow, can not result. 
+Total time is: 19ms
+------------------------------------------
 
-#### Time complexity
-1. insert: O(N), N is maxelems
-2. report: O(N), N is maxelems
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 1000000
+Initialize time is: 0ms
+Insert time is: 59ms
+Report time is: 109ms
 
-#### Space complexity
-O(N), N is maxelems
+Total time is: 331ms
+------------------------------------------
 
-# Performance tuning
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 2000000
+Initialize time is: 0ms
+Insert time is: 107ms
+Report time is: 133ms
+
+Total time is: 403ms
+------------------------------------------
+
+------------------------------------------
+BitVector performance tuning: 
+Maxval is 1000000, Maxelems is 4000000
+Initialize time is: 0ms
+Insert time is: 203ms
+Report time is: 148ms
+
+Total time is: 515ms
+------------------------------------------
+```
+
 ## SimpleBinSet
 ```
 ------------------------------------------
@@ -291,154 +529,5 @@ Insert time is 8121ms.
 Report time is 214ms.
 
 Total time is 8339ms.
-------------------------------------------
-```
-
-## BinarySearchTreeSet
-```
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 1000000, Maxelems is 10000
-Initialize time is: 0ms
-Insert time is: 3ms
-Report time is: 2ms
-
-Total time is: 6ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 1000000, Maxelems is 20000
-Initialize time is: 0ms
-Insert time is: 4ms
-Report time is: 2ms
-
-Total time is: 6ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 1000000, Maxelems is 40000
-Initialize time is: 0ms
-Insert time is: 9ms
-Report time is: 3ms
-
-Total time is: 12ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 100000000, Maxelems is 1000000
-Initialize time is: 0ms
-Insert time is: 640ms
-Report time is: 63ms
-
-Total time is: 703ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 100000000, Maxelems is 2000000
-Initialize time is: 0ms
-Insert time is: 1004ms
-Report time is: 505ms
-
-Total time is: 1509ms
-------------------------------------------
-------------------------------------------
-BinarySearchTreeset performance tuning: 
-Maxval is 100000000, Maxelems is 4000000
-Initialize time is: 0ms
-Insert time is: 2438ms
-Report time is: 574ms
-
-Total time is: 3012ms
-------------------------------------------
-```
-
-## Bit Vector
-```
-------------------------------------------
-BitVector performance tuning: 
-Maxval is 1000000, Maxelems is 10000
-Initialize time is: 0ms
-Insert time is: 2ms
-Report time is: 8ms
-
-Total time is: 17ms
-------------------------------------------
-------------------------------------------
-BitVector performance tuning: 
-Maxval is 1000000, Maxelems is 20000
-Initialize time is: 0ms
-Insert time is: 3ms
-Report time is: 7ms
-
-Total time is: 17ms
-------------------------------------------
-------------------------------------------
-BitVector performance tuning: 
-Maxval is 1000000, Maxelems is 40000
-Initialize time is: 0ms
-Insert time is: 4ms
-Report time is: 8ms
-
-Total time is: 19ms
-------------------------------------------
-------------------------------------------
-BitVector performance tuning: 
-Maxval is 1000000, Maxelems is 1000000
-Initialize time is: 0ms
-Insert time is: 59ms
-Report time is: 109ms
-
-Total time is: 331ms
-------------------------------------------
-------------------------------------------
-BitVector performance tuning: 
-Maxval is 1000000, Maxelems is 2000000
-Initialize time is: 0ms
-Insert time is: 107ms
-Report time is: 133ms
-
-Total time is: 403ms
-------------------------------------------
-------------------------------------------
-BitVector performance tuning: 
-Maxval is 1000000, Maxelems is 4000000
-Initialize time is: 0ms
-Insert time is: 203ms
-Report time is: 148ms
-
-Total time is: 515ms
-------------------------------------------
-```
-
-## SimpleListSet
-```
-------------------------------------------
-SimpleListSet performance tuning:
-Maxcal is 1000000, Maxelem is 10000
-Initialize time is 0ms.
-Insert time is 207ms.
-Report time is : 0ms.
-
-Total time is 209ms.
-------------------------------------------
-
-------------------------------------------
-SimpleListSet performance tuning:
-Maxcal is 1000000, Maxelem is 20000
-Initialize time is 0ms.
-Insert time is 1162ms.
-Report time is : 1ms.
-
-Total time is 1164ms.
-------------------------------------------
-
-------------------------------------------
-SimpleListSet performance tuning:
-Maxcal is 1000000, Maxelem is 40000
-Initialize time is 0ms.
-Insert time is 5755ms.
-Report time is : 1ms.
-
-Total time is 5757ms.
 ------------------------------------------
 ```

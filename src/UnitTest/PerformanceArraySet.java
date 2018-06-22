@@ -1,7 +1,6 @@
 package UnitTest;
 
 import java.util.Random;
-
 import IntSet.IntSetArr;
 
 public class PerformanceArraySet {
@@ -34,7 +33,7 @@ public class PerformanceArraySet {
 		report_time = stopTime - startTime;
 
 		System.out.println("\n------------------------------------------");
-		System.out.println("SimpleBinsSet performance tuning:");
+		System.out.println("ArraySet performance tuning:");
 		System.out.println("Maxval is " + maxval + ", Maxelem is " + maxelem);
 		System.out.println("Initialize time is " + init_time + "ms.");
 		System.out.println("Insert time is " + insert_time + "ms.");
